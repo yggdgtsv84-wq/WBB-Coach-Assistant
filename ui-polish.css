@@ -1,4 +1,28 @@
-/* Teams + Game screens: Wests jersey visual system */
+/* Wests jersey visual system — Bench, History and Season */
+body.screen-bench,body.screen-history,body.screen-season{background:radial-gradient(circle at 50% 18%,#2385b6 0,#0d557d 36%,#062c50 72%,#041a31 100%);color:#fff;min-height:100vh;position:relative}
+body.screen-bench:before,body.screen-history:before,body.screen-season:before{content:"";position:fixed;inset:70px 0 0;pointer-events:none;background:radial-gradient(ellipse at 50% 70%,#7edaf322 0,#7edaf30a 25%,transparent 58%);z-index:0}
+body.screen-bench main,body.screen-history main,body.screen-season main{max-width:1180px;padding-top:26px;position:relative;z-index:1}
+body.screen-bench main>h1,body.screen-history main>h1,body.screen-season main>h1{color:#fff;letter-spacing:-.025em;text-transform:uppercase;font-size:28px;text-shadow:0 3px 14px #03182f88}
+body.screen-bench main>h1:before,body.screen-history main>h1:before,body.screen-season main>h1:before{background:linear-gradient(145deg,#67c7ee,#1769d1);color:#071b35;border-radius:50%;width:38px;height:38px;box-shadow:0 0 0 2px #67c7ee55,0 5px 14px #0005}
+body.screen-bench .sub,body.screen-history .sub,body.screen-season .sub{color:#a9d9ee}
+body.screen-bench h2,body.screen-history h2,body.screen-season h2{color:#fff;text-transform:uppercase;letter-spacing:.03em}
+body.screen-bench .card,body.screen-history .card,body.screen-season .card{background:linear-gradient(145deg,#062744ee,#041b32ee);border:1px solid #2a91bd;border-radius:20px;box-shadow:0 12px 30px #0005;color:#fff}
+body.screen-bench .row,body.screen-history .row,body.screen-season .row{position:relative;overflow:hidden;background:linear-gradient(105deg,#073252,#041d35);border:1px solid #147eaa;border-radius:14px;color:#fff;box-shadow:0 7px 20px #0004}
+body.screen-bench .row:before,body.screen-history .row:before,body.screen-season .row:before{content:"";position:absolute;right:-55px;top:-60px;width:145px;height:125px;border-radius:50%;border:1px solid #7bd8f522;pointer-events:none}
+body.screen-bench .row b,body.screen-history .row b,body.screen-season .row b{color:#fff}
+body.screen-bench .stats,body.screen-history .stats,body.screen-season .stats{color:#8fc7dc}
+body.screen-bench .badge,body.screen-history .badge,body.screen-season .badge{background:#67c7ee;color:#061b31}
+body.screen-bench .buttons button,body.screen-history .buttons button,body.screen-season .buttons button{border-radius:9px}
+body.screen-bench .primary,body.screen-history .primary,body.screen-season .primary{background:#1769d1}
+body.screen-bench .success,body.screen-history .success,body.screen-season .success{background:#16845f}
+body.screen-bench .danger,body.screen-history .danger,body.screen-season .danger{background:#a52d40}
+body.screen-bench .secondary,body.screen-history .secondary,body.screen-season .secondary{background:#0b3a5c;color:#e1f5fc;border-color:#2083a9}
+body.screen-bench .jersey{width:64px;height:73px;font-size:20px}
+body.screen-bench h2,body.screen-history h2,body.screen-season h2{border-left:4px solid #67c7ee;padding-left:8px}
+body.screen-history .notice,body.screen-season .notice,body.screen-bench .notice{background:#061e35;color:#8fc7dc;border:1px dashed #2783a8;border-radius:12px;padding:14px}
+@media(max-width:600px){body.screen-bench main,body.screen-history main,body.screen-season main{padding:20px 10px 92px}body.screen-bench main>h1,body.screen-history main>h1,body.screen-season main>h1{font-size:25px}body.screen-bench .card,body.screen-history .card,body.screen-season .card{border-radius:16px}body.screen-bench .row,body.screen-history .row,body.screen-season .row{padding:9px 10px}body.screen-bench .jersey{width:56px;height:64px;font-size:18px}}
+
+/* Existing Teams + Game screens */
 body.screen-teams,body.screen-game,body.screen-practice{background:#041a31;color:#fff}
 body.screen-teams main,body.screen-game main,body.screen-practice main{max-width:1180px;padding-top:26px}
 body.screen-teams main>h1,body.screen-game main>h1,body.screen-practice main>h1{color:#fff;letter-spacing:-.025em;text-transform:uppercase;font-size:28px}
@@ -35,8 +59,6 @@ body.screen-game .player .success{background:#16845f}
 body.screen-game .badge,body.screen-practice .badge{background:#67c7ee;color:#061b31}
 body.screen-game .buttons .primary,body.screen-game .buttons .success,body.screen-game .buttons .danger,body.screen-practice .buttons .primary,body.screen-practice .buttons .success,body.screen-practice .buttons .danger{border-radius:9px}
 body.screen-game h2{border-left:5px solid #67c7ee;padding-left:9px}
-
-/* Practice: use the same blue fabric / jersey lighting language as the reference image. */
 body.screen-practice{min-height:100vh;background:radial-gradient(circle at 50% 24%,#2385b6 0,#0d557d 38%,#062c50 72%,#041a31 100%);position:relative}
 body.screen-practice:before{content:"";position:fixed;inset:70px 0 0;pointer-events:none;background:radial-gradient(ellipse at 50% 70%,#7edaf322 0,#7edaf30a 25%,transparent 58%);z-index:0}
 body.screen-practice main{position:relative;z-index:1}
@@ -65,21 +87,4 @@ body.screen-practice .row .danger{background:#7f2638;color:#fff;border-color:#b3
 body.screen-practice .notice{background:#061e35;color:#8fc7dc;border:1px dashed #2783a8;border-radius:12px;padding:14px}
 body.screen-practice .full{background:#67ccef;color:#06233d;border:0;border-radius:12px;font-weight:950;box-shadow:0 7px 16px #0003}
 body.screen-practice .card h2{border-left:4px solid #67c7ee;padding-left:8px}
-
-@media(max-width:600px){
- body.screen-teams main,body.screen-game main,body.screen-practice main{padding:20px 10px 92px}
- body.screen-teams #app>.buttons:first-of-type{background:linear-gradient(90deg,#062440f2,#0a3152f2);padding:11px;min-height:78px}
- body.screen-teams .row{min-height:82px;padding:8px}
- body.screen-teams .row .team-player-jersey{width:60px;height:68px;font-size:17px;flex-basis:60px}
- body.screen-teams .row button{padding:8px 9px;min-height:38px;font-size:10px}
- body.screen-game .score{font-size:50px}
- body.screen-game .player{min-height:132px;padding:11px}
- body.screen-game .player .jersey{width:56px;height:64px;font-size:18px}
- body.screen-practice main>h1{font-size:25px}
- body.screen-practice .timer{border-radius:20px;padding:20px 11px 15px}
- body.screen-practice .timer .time{font-size:58px}
- body.screen-practice .timer .buttons{flex-wrap:wrap}
- body.screen-practice .timer .buttons button{flex:1;min-width:84px}
- body.screen-practice .row{min-height:72px;padding:8px}
- body.screen-practice .row button{padding:7px 8px;font-size:8px}
-}
+@media(max-width:600px){body.screen-teams main,body.screen-game main,body.screen-practice main,body.screen-bench main,body.screen-history main,body.screen-season main{padding:20px 10px 92px}body.screen-teams #app>.buttons:first-of-type{background:linear-gradient(90deg,#062440f2,#0a3152f2);padding:11px;min-height:78px}body.screen-teams .row{min-height:82px;padding:8px}body.screen-teams .row .team-player-jersey{width:60px;height:68px;font-size:17px;flex-basis:60px}body.screen-teams .row button{padding:8px 9px;min-height:38px;font-size:10px}body.screen-game .score{font-size:50px}body.screen-game .player{min-height:132px;padding:11px}body.screen-game .player .jersey{width:56px;height:64px;font-size:18px}body.screen-practice main>h1{font-size:25px}body.screen-practice .timer{border-radius:20px;padding:20px 11px 15px}body.screen-practice .timer .time{font-size:58px}body.screen-practice .timer .buttons{flex-wrap:wrap}body.screen-practice .timer .buttons button{flex:1;min-width:84px}body.screen-practice .row{min-height:72px;padding:8px}body.screen-practice .row button{padding:7px 8px;font-size:8px}}
