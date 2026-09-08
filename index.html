@@ -17,5 +17,25 @@
 <script src="config.js?v=6"></script>
 <script src="app.js?v=7"></script>
 <script src="auth-guard.js?v=2"></script>
+<script>
+// Practice drills use user_id in Supabase (not team_id).
+// This small override keeps the existing app.js untouched while fixing drill creation.
+window.addDrill=async function(){
+  const name=prompt("Drill name");
+  if(!name)return;
+  const minutes=Number(prompt("Minutes"));
+  if(!Number.isFinite(minutes)||minutes<=0)return;
+  try{
+    const key=String(window.SUPABASE_PUBLISHABLE_KEY||window.SUPABASE_ANON_KEY||"").trim();
+    const client=window.supabase.createClient(String(window.SUPABASE_URL).trim(),key,{auth:{persistSession:true}});
+    const session=await client.auth.getSession();
+    const currentUser=session.data?.session?.user;
+    if(!currentUser)return alert("Please sign in again.");
+    const r=await client.from("drills").insert({user_id:currentUser.id,name:name.trim(),minutes}).select().single();
+    if(r.error)return alert(r.error.message);
+    location.reload();
+  }catch(e){alert(e.message||e)}
+};
+</script>
 </body>
 </html>
