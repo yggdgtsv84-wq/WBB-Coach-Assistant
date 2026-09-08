@@ -28,16 +28,25 @@
   window.practice=function(){
     const all=drills||[],ids=read(),session=ids.map(id=>all.find(d=>d.id===id)).filter(Boolean);
     if(ids.length!==session.length)write(session.map(d=>d.id));
-    const current=session.find(d=>d.id===timer.id),total=session.reduce((n,d)=>n+Number(d.minutes||0),0),title=team()?.name||"Current Team";
+    const current=all.find(d=>d.id===timer.id),total=session.reduce((n,d)=>n+Number(d.minutes||0),0),title=team()?.name||"Current Team";
+    const selectedId=timer.id;
     const sessionRows=session.map((d,i)=>`<div class="row"><b>${esc(d.name)}<small>${d.minutes} min</small></b><button class="secondary" onclick="movePracticeDrill('${d.id}',-1)" ${i===0?'disabled':''}>↑</button><button class="secondary" onclick="movePracticeDrill('${d.id}',1)" ${i===session.length-1?'disabled':''}>↓</button><button class="danger" onclick="removeFromPracticeSession('${d.id}')">REMOVE</button></div>`).join("");
-    const library=all.map(d=>`<div class="row"><b>${esc(d.name)}<small>${d.minutes} min</small></b>${ids.includes(d.id)?'<span class="badge">IN SESSION</span>':'<button class="secondary" onclick="addToPracticeSession(\''+d.id+'\')">ADD</button>'}<button class="secondary" onclick="selPracticeDrill('${d.id}')">SELECT</button></div>`).join("");
+    const library=all.map(d=>`<div class="row"><b>${esc(d.name)}<small>${d.minutes} min</small></b>${ids.includes(d.id)?'<span class="badge">IN SESSION</span>':'<button class="secondary" onclick="addToPracticeSession(\''+d.id+'\')">ADD</button>'}<button class="${selectedId===d.id?'primary':'secondary'}" onclick="selPracticeDrill('${d.id}')">${selectedId===d.id?'SELECTED':'SELECT'}</button></div>`).join("");
     $("app").innerHTML=`<h1>Practice</h1><p class="sub">${esc(title)} · build a session from your saved drills.</p><div class="timer"><div>${esc(current?.name||"Select a drill")}</div><div class="time">${fmt(timer.left)}</div><div class="buttons" style="justify-content:center"><button class="success" onclick="startPracticeSession()">START SESSION</button><button class="secondary" onclick="pausePracticeSession()">PAUSE</button><button class="danger" onclick="resetPracticeSession()">RESET</button></div></div><div class="card"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><div><h2 style="margin:0">${esc(title)} SESSION</h2><small>${session.length} drills · ${total} min total</small></div>${session.length?'<button class="danger" onclick="clearPracticeSession()">CLEAR</button>':''}</div><div class="list" style="margin-top:10px">${sessionRows||'<div class="notice">No drills in this session yet. Add saved drills below.</div>'}</div></div><div class="card"><h2 style="margin-top:0">SAVED DRILLS</h2><div class="list">${library||'<div class="notice">No saved drills yet. Add your first drill below.</div>'}</div><button class="primary full" style="margin-top:10px" onclick="addDrill()">＋ ADD DRILL</button></div>`;
   };
 
-  window.selPracticeDrill=function(id){timer.id=id;timer.left=(drills.find(x=>x.id===id)?.minutes||0)*60;sessionIndex=Math.max(0,drillsInSession().findIndex(d=>d.id===id));practice()};
+  window.selPracticeDrill=function(id){
+    const d=drills.find(x=>x.id===id);
+    if(!d)return;
+    timer.id=id;
+    timer.left=(d.minutes||0)*60;
+    const index=drillsInSession().findIndex(x=>x.id===id);
+    if(index>=0)sessionIndex=index;
+    practice();
+  };
   function prepareAudio(){try{const AC=window.AudioContext||window.webkitAudioContext;if(AC){if(!audioCtx)audioCtx=new AC();if(audioCtx.state==="suspended")audioCtx.resume()}}catch(e){}}
   window.startPracticeSession=function(){
-    const s=drillsInSession();if(!s.length)return alert("Add at least one drill to the session.");prepareAudio();if(sessionIndex>=s.length)sessionIndex=0;timer.id=s[sessionIndex].id;if(timer.left<=0)timer.left=s[sessionIndex].minutes*60;clearInterval(int);timer.running=true;int=setInterval(()=>{timer.left--;if(timer.left===60||timer.left===0)beep();if(timer.left<=0){beep();sessionIndex++;if(sessionIndex>=s.length){timer.left=0;timer.running=false;clearInterval(int)}else{timer.id=s[sessionIndex].id;timer.left=s[sessionIndex].minutes*60}}practice()},1000);practice();
+    const s=drillsInSession();if(!s.length)return alert("Add at least one drill to the session.");prepareAudio();if(sessionIndex>=s.length||!s[sessionIndex])sessionIndex=0;timer.id=s[sessionIndex].id;if(timer.left<=0)timer.left=s[sessionIndex].minutes*60;clearInterval(int);timer.running=true;int=setInterval(()=>{timer.left--;if(timer.left===60)beep();if(timer.left<=0){beep();sessionIndex++;if(sessionIndex>=s.length){timer.left=0;timer.running=false;clearInterval(int)}else{timer.id=s[sessionIndex].id;timer.left=s[sessionIndex].minutes*60}}practice()},1000);practice();
   };
   window.pausePracticeSession=function(){timer.running=false;clearInterval(int);practice()};
   window.resetPracticeSession=function(){window.pausePracticeSession();sessionIndex=0;const s=drillsInSession();timer.id=s[0]?.id||null;timer.left=s[0]?(s[0].minutes||0)*60:0;practice()};
