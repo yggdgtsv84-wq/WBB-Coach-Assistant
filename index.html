@@ -19,7 +19,6 @@
 <script src="auth-guard.js?v=2"></script>
 <script>
 // Practice drills use user_id in Supabase (not team_id).
-// This small override keeps the existing app.js untouched while fixing drill creation.
 window.addDrill=async function(){
   const name=prompt("Drill name");
   if(!name)return;
@@ -37,6 +36,6 @@ window.addDrill=async function(){
   }catch(e){alert(e.message||e)}
 };
 </script>
-<script src="practice-session.js?v=2"></script>
+<script src="practice-session.js?v=3"></script>
 </body>
 </html>
