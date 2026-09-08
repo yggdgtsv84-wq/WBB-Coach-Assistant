@@ -7,6 +7,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="style.css?v=10">
 <link rel="stylesheet" href="dashboard.css?v=1">
+<link rel="stylesheet" href="ui-polish.css?v=1">
 <title>West Belconnen Coach</title>
 </head>
 <body>
@@ -54,6 +55,17 @@ window.addDrill=async function(){
       jersey.textContent=match[1];
       row.insertBefore(jersey,row.firstChild);
     });
+  };
+})();
+</script>
+<script>
+// Give the Teams and Game screens their own Wests-style visual theme.
+(function(){
+  const oldRender=window.render;
+  window.render=function(){
+    oldRender();
+    document.body.classList.remove("screen-home","screen-game","screen-bench","screen-history","screen-practice","screen-season","screen-teams","screen-settings");
+    document.body.classList.add("screen-"+S);
   };
 })();
 </script>
