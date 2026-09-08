@@ -5,6 +5,7 @@
   const write=x=>localStorage.setItem(key(),JSON.stringify(x));
   const drillsInSession=()=>{const ids=read();return ids.map(id=>drills.find(d=>d.id===id)).filter(Boolean)};
   let sessionIndex=0;
+  const note=d=>d.notes?`<small class="drill-notes">${esc(d.notes)}</small>`:"";
 
   window.addToPracticeSession=function(id){const ids=read();if(!ids.includes(id))ids.push(id);write(ids);practice()};
   window.removeFromPracticeSession=function(id){write(read().filter(x=>x!==id));if(sessionIndex>=read().length)sessionIndex=Math.max(0,read().length-1);practice()};
@@ -30,12 +31,13 @@
   window.addDrill=async function(){
     const name=prompt("Drill name");if(!name)return;
     const minutes=Number(prompt("Minutes"));if(!Number.isFinite(minutes)||minutes<=0)return;
+    const notes=prompt("Brief description / notes (optional)")||"";
     try{
       const keyValue=String(window.SUPABASE_PUBLISHABLE_KEY||window.SUPABASE_ANON_KEY||"").trim();
       const client=window.supabase.createClient(String(window.SUPABASE_URL).trim(),keyValue,{auth:{persistSession:true}});
       const session=await client.auth.getSession();const currentUser=session.data?.session?.user;
       if(!currentUser)return alert("Please sign in again.");
-      const r=await client.from("drills").insert({user_id:currentUser.id,name:name.trim(),minutes}).select().single();
+      const r=await client.from("drills").insert({user_id:currentUser.id,name:name.trim(),minutes,notes:notes.trim()}).select().single();
       if(r.error)return alert(r.error.message);
       drills.push(r.data);timer.id=r.data.id;timer.left=minutes*60;S="practice";practice();
     }catch(e){alert(e.message||e)}
@@ -44,9 +46,9 @@
   window.practice=function(){
     const all=drills||[],ids=read(),session=ids.map(id=>all.find(d=>d.id===id)).filter(Boolean);
     if(ids.length!==session.length)write(session.map(d=>d.id));
-    const current=session.find(d=>d.id===timer.id),total=session.reduce((n,d)=>n+Number(d.minutes||0),0),title=team()?.name||"Current Team";
-    const sessionRows=session.map((d,i)=>`<div class="row"><b>${esc(d.name)}<small>${d.minutes} min</small></b><button class="secondary" onclick="movePracticeDrill('${d.id}',-1)" ${i===0?'disabled':''}>↑</button><button class="secondary" onclick="movePracticeDrill('${d.id}',1)" ${i===session.length-1?'disabled':''}>↓</button><button class="danger" onclick="removeFromPracticeSession('${d.id}')">REMOVE</button></div>`).join("");
-    const library=all.map(d=>`<div class="row"><b>${esc(d.name)}<small>${d.minutes} min</small></b>${ids.includes(d.id)?'<span class="badge">IN SESSION</span>':'<button class="secondary" onclick="addToPracticeSession(\''+d.id+'\')">ADD</button>'}<button class="secondary" onclick="selPracticeDrill('${d.id}')">SELECT</button><button class="danger" onclick="deleteDrill('${d.id}')">DELETE</button></div>`).join("");
+    const current=all.find(d=>d.id===timer.id),total=session.reduce((n,d)=>n+Number(d.minutes||0),0),title=team()?.name||"Current Team";
+    const sessionRows=session.map((d,i)=>`<div class="row"><b>${esc(d.name)}<small>${d.minutes} min</small>${note(d)}</b><button class="secondary" onclick="movePracticeDrill('${d.id}',-1)" ${i===0?'disabled':''}>↑</button><button class="secondary" onclick="movePracticeDrill('${d.id}',1)" ${i===session.length-1?'disabled':''}>↓</button><button class="danger" onclick="removeFromPracticeSession('${d.id}')">REMOVE</button></div>`).join("");
+    const library=all.map(d=>`<div class="row"><b>${esc(d.name)}<small>${d.minutes} min</small>${note(d)}</b>${ids.includes(d.id)?'<span class="badge">IN SESSION</span>':'<button class="secondary" onclick="addToPracticeSession(\''+d.id+'\')">ADD</button>'}<button class="secondary" onclick="selPracticeDrill('${d.id}')">SELECT</button><button class="danger" onclick="deleteDrill('${d.id}')">DELETE</button></div>`).join("");
     $("app").innerHTML=`<h1>Practice</h1><p class="sub">${esc(title)} · build a session from your saved drills.</p><div class="timer"><div>${esc(current?.name||"Select a drill")}</div><div class="time">${fmt(timer.left)}</div><div class="buttons" style="justify-content:center"><button class="success" onclick="startPracticeSession()">START SESSION</button><button class="secondary" onclick="pausePracticeSession()">PAUSE</button><button class="danger" onclick="resetPracticeSession()">RESET</button></div></div><div class="card"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><div><h2 style="margin:0">${esc(title)} SESSION</h2><small>${session.length} drills · ${total} min total</small></div>${session.length?'<button class="danger" onclick="clearPracticeSession()">CLEAR</button>':''}</div><div class="list" style="margin-top:10px">${sessionRows||'<div class="notice">No drills in this session yet. Add saved drills below.</div>'}</div></div><div class="card"><h2 style="margin-top:0">SAVED DRILLS</h2><div class="list">${library||'<div class="notice">No saved drills yet. Add your first drill below.</div>'}</div><button class="primary full" style="margin-top:10px" onclick="addDrill()">＋ ADD DRILL</button></div>`;
   };
 
