@@ -76,8 +76,12 @@
 
   window.selPracticeDrill=function(id){timer.id=id;timer.left=(drills.find(x=>x.id===id)?.minutes||0)*60;sessionIndex=Math.max(0,drillsInSession().findIndex(d=>d.id===id));practice()};
   function prepareAudio(){try{const AC=window.AudioContext||window.webkitAudioContext;if(AC){if(!audioCtx)audioCtx=new AC();if(audioCtx.state==="suspended")audioCtx.resume()}}catch(e){}}
+  function alertCoach(){
+    beep();
+    try{if("vibrate" in navigator)navigator.vibrate([300,120,300])}catch(e){}
+  }
   window.startPracticeSession=function(){
-    const s=drillsInSession();if(!s.length)return alert("Add at least one drill to the session.");prepareAudio();if(sessionIndex>=s.length)sessionIndex=0;timer.id=s[sessionIndex].id;if(timer.left<=0)timer.left=s[sessionIndex].minutes*60;clearInterval(int);timer.running=true;int=setInterval(()=>{timer.left--;if(timer.left===60||timer.left===0)beep();if(timer.left<=0){beep();sessionIndex++;if(sessionIndex>=s.length){timer.left=0;timer.running=false;clearInterval(int)}else{timer.id=s[sessionIndex].id;timer.left=s[sessionIndex].minutes*60}}practice()},1000);practice();
+    const s=drillsInSession();if(!s.length)return alert("Add at least one drill to the session.");prepareAudio();if(sessionIndex>=s.length)sessionIndex=0;timer.id=s[sessionIndex].id;if(timer.left<=0)timer.left=s[sessionIndex].minutes*60;clearInterval(int);timer.running=true;int=setInterval(()=>{timer.left--;if(timer.left===60)alertCoach();if(timer.left===0)beep();if(timer.left<=0){sessionIndex++;if(sessionIndex>=s.length){timer.left=0;timer.running=false;clearInterval(int)}else{timer.id=s[sessionIndex].id;timer.left=s[sessionIndex].minutes*60}}practice()},1000);practice();
   };
   window.pausePracticeSession=function(){timer.running=false;clearInterval(int);practice()};
   window.resetPracticeSession=function(){window.pausePracticeSession();sessionIndex=0;const s=drillsInSession();timer.id=s[0]?.id||null;timer.left=s[0]?(s[0].minutes||0)*60:0;practice()};
