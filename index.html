@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-<meta name="theme-color" content="#06284A">
+<meta name="theme-color" content="#071b35">
 <link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=7">
 <title>West Belconnen Coach</title>
 </head>
 <body>
@@ -13,12 +13,9 @@
 <main id="app"></main>
 <nav><button data-s="home">⌂<small>Home</small></button><button data-s="game">🏀<small>Game</small></button><button data-s="practice">⏱<small>Practice</small></button><button data-s="season">📊<small>Season</small></button></nav>
 <aside id="drawer" class="hide"><div><button id="close">×</button><button data-s="home">⌂ Home</button><button data-s="game">🏀 Game</button><button data-s="bench">🔄 Bench</button><button data-s="history">📅 Game History</button><button data-s="practice">⏱ Practice</button><button data-s="season">📊 Season</button><button data-s="teams">👕 Teams & Players</button><button data-s="settings">⚙ Settings</button></div></aside>
-
-<!-- IMPORTANT: normal script tags deliberately load in this order.
-     This guarantees config.js has run before app.js starts. -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="config.js?v=5"></script>
-<script src="app.js?v=5"></script>
-<script src="auth-guard.js?v=1"></script>
+<script src="config.js?v=6"></script>
+<script src="app.js?v=6"></script>
+<script src="auth-guard.js?v=2"></script>
 </body>
 </html>
