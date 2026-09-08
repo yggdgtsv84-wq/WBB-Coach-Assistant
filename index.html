@@ -37,5 +37,24 @@ window.addDrill=async function(){
 };
 </script>
 <script src="practice-session.js?v=3"></script>
+<script>
+// Add the same basketball singlet graphic used on the Game screen to player rows.
+(function(){
+  const oldRender=window.render;
+  window.render=function(){
+    oldRender();
+    if(S!=="teams")return;
+    document.querySelectorAll("#app .row").forEach(row=>{
+      if(row.querySelector(".team-player-jersey"))return;
+      const match=row.textContent.match(/#\s*(\d+)/);
+      if(!match)return;
+      const jersey=document.createElement("span");
+      jersey.className="jersey team-player-jersey";
+      jersey.textContent=match[1];
+      row.insertBefore(jersey,row.firstChild);
+    });
+  };
+})();
+</script>
 </body>
 </html>
