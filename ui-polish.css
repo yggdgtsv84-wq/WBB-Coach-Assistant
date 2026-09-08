@@ -20,7 +20,6 @@ body.screen-bench .secondary,body.screen-history .secondary,body.screen-season .
 body.screen-bench .jersey{width:64px;height:73px;font-size:20px}
 body.screen-bench h2,body.screen-history h2,body.screen-season h2{border-left:4px solid #67c7ee;padding-left:8px}
 body.screen-history .notice,body.screen-season .notice,body.screen-bench .notice{background:#061e35;color:#8fc7dc;border:1px dashed #2783a8;border-radius:12px;padding:14px}
-@media(max-width:600px){body.screen-bench main,body.screen-history main,body.screen-season main{padding:20px 10px 92px}body.screen-bench main>h1,body.screen-history main>h1,body.screen-season main>h1{font-size:25px}body.screen-bench .card,body.screen-history .card,body.screen-season .card{border-radius:16px}body.screen-bench .row,body.screen-history .row,body.screen-season .row{padding:9px 10px}body.screen-bench .jersey{width:56px;height:64px;font-size:18px}}
 
 /* Existing Teams + Game screens */
 body.screen-teams,body.screen-game,body.screen-practice{background:#041a31;color:#fff}
@@ -74,8 +73,6 @@ body.screen-practice .timer .success{background:#062b4b;color:#fff}
 body.screen-practice .timer .secondary{background:#ffffffdd;color:#06233d}
 body.screen-practice .timer .danger{background:#8c2639;color:#fff}
 body.screen-practice .card{background:linear-gradient(145deg,#062744ee,#041b32ee);border-color:#2a91bd;border-radius:20px;box-shadow:0 12px 30px #0005}
-body.screen-practice .card>div:first-child h2{font-size:17px}
-body.screen-practice .card>div:first-child small{color:#8fc7dc}
 body.screen-practice .row{position:relative;overflow:hidden;min-height:78px;background:linear-gradient(105deg,#073252,#041d35);border:1px solid #147eaa;border-radius:13px;padding:9px 10px;color:#fff;box-shadow:0 6px 17px #0003;align-items:center}
 body.screen-practice .row:before{content:"";position:absolute;right:-55px;top:-60px;width:145px;height:125px;border-radius:50%;border:1px solid #7bd8f522;pointer-events:none}
 body.screen-practice .row b{color:#fff;font-size:13px;line-height:1.35}
@@ -116,4 +113,34 @@ body.screen-teams #app>.full{display:block;width:100%;margin-top:14px;min-height
 body.screen-teams #app>.full:before{content:"＋ ";font-size:16px}
 body.screen-teams .card{background:#062b47ee;border:1px solid #299bc8;border-radius:18px;color:#fff}
 body.screen-teams .notice{background:#06233bee;color:#a9d8e8;border:1px dashed #3b9fbd;border-radius:12px;padding:18px}
-@media(max-width:600px){body.screen-teams main{padding:17px 10px 96px}body.screen-teams main>h1{font-size:26px}body.screen-teams main>.sub{margin-left:55px;margin-bottom:15px}body.screen-teams #app>.buttons:first-of-type{grid-template-columns:repeat(2,minmax(0,1fr));padding:10px;border-radius:17px;margin-bottom:18px}body.screen-teams #app>.buttons:first-of-type button{min-height:52px;margin-top:13px;padding:8px 6px;font-size:9px}body.screen-teams h2{font-size:13px;padding:10px 11px;margin-bottom:10px}body.screen-teams .list{grid-template-columns:1fr;gap:9px}body.screen-teams .row{grid-template-columns:72px minmax(0,1fr) auto;min-height:108px;border-radius:15px;padding:8px}body.screen-teams .row .team-player-jersey{width:65px;height:76px;font-size:18px}body.screen-teams .row b{font-size:14px}body.screen-teams .row b:before{font-size:7px}body.screen-teams .row button{font-size:8px;padding:6px 8px}}
+
+/* Bench — same literal Wests jersey/court treatment */
+body.screen-bench{min-height:100vh;background:radial-gradient(circle at 50% 8%,#2c9dce 0,#126b98 25%,#073c62 56%,#041a31 100%);overflow-x:hidden}
+body.screen-bench:after{content:"";position:fixed;inset:68px 0 0;pointer-events:none;background:linear-gradient(90deg,transparent 0 14%,#8ce4fa09 14.1% 14.3%,transparent 14.4% 85.6%,#8ce4fa09 85.7% 85.9%,transparent 86%),radial-gradient(ellipse at 50% 86%,#8ce4fa22,transparent 54%);z-index:0}
+body.screen-bench main{position:relative;z-index:1;max-width:980px;padding:18px 14px 110px}
+body.screen-bench main>h1{display:flex;align-items:center;gap:11px;margin:0;color:#fff;font-size:30px;line-height:1;font-weight:950;letter-spacing:-.04em;text-shadow:0 4px 16px #03182f99}
+body.screen-bench main>h1:before{content:"🏀";display:grid;place-items:center;width:44px;height:44px;flex:0 0 44px;background:linear-gradient(145deg,#b7ecfb,#4eb7df 55%,#1769b4);border-radius:12px;color:#06233d;font-size:21px;box-shadow:0 7px 18px #0005,inset 0 1px #fff9}
+body.screen-bench main>h1:after{content:"LIVE ROTATION";margin-left:auto;font-size:8px;letter-spacing:.16em;padding:7px 10px;border:1px solid #7edcf366;border-radius:999px;color:#b9edfb;background:#062440aa}
+body.screen-bench main>.sub{margin:8px 0 18px 55px;color:#c4eaf6;font-size:12px;font-weight:700}
+body.screen-bench .benchcols{display:grid;grid-template-columns:1fr 1fr;gap:13px;position:relative}
+body.screen-bench .benchcols:before{content:"";position:absolute;left:50%;top:4%;bottom:4%;width:2px;background:linear-gradient(transparent,#74d8f055,transparent);pointer-events:none;z-index:2}
+body.screen-bench .bench{position:relative;overflow:hidden;padding:12px;border-radius:20px;border:1px solid #53bfe6;background:linear-gradient(145deg,#062946ee,#073f60ee);box-shadow:0 16px 36px #0005}
+body.screen-bench .bench:before{content:"";position:absolute;left:50%;top:-92px;transform:translateX(-50%);width:330px;height:190px;border-radius:50%;border:2px solid #8be4fa18;pointer-events:none}
+body.screen-bench .bench h3{position:relative;margin:0 0 10px;padding:12px 12px;border-radius:12px;background:linear-gradient(145deg,#b7efff,#55bfe3);color:#06233d;font-size:11px;letter-spacing:.11em;box-shadow:0 7px 18px #0003;z-index:1}
+body.screen-bench .bench:first-child h3:after{content:"  •  STARTING FIVE";font-size:8px;letter-spacing:.08em}
+body.screen-bench .bench:nth-child(2) h3:after{content:"  •  READY TO PLAY";font-size:8px;letter-spacing:.08em}
+body.screen-bench .benchitem{position:relative;display:grid;grid-template-columns:58px minmax(0,1fr) auto;align-items:center;gap:9px;min-height:90px;margin:8px 0;padding:8px;border-radius:15px;background:linear-gradient(145deg,#0a4668,#041f38);border:1px solid #299bc8;box-shadow:0 9px 22px #0005;overflow:hidden;transition:transform .15s ease,box-shadow .15s ease}
+body.screen-bench .benchitem:before{content:"";position:absolute;right:-44px;top:-55px;width:135px;height:120px;border-radius:50%;border:2px solid #76d9f51a;pointer-events:none}
+body.screen-bench .benchitem:active{transform:scale(.985);box-shadow:0 5px 12px #0005}
+body.screen-bench .benchitem .jersey{width:52px;height:62px;margin:0;font-size:17px;filter:drop-shadow(0 5px 5px #0006)}
+body.screen-bench .benchitem>b{position:relative;color:#fff;font-size:13px;line-height:1.25;z-index:1}
+body.screen-bench .benchitem b small{display:block;margin-top:6px;color:#9ed9ed;font-size:9px;line-height:1.35;font-weight:750}
+body.screen-bench .benchitem button{position:relative;z-index:2;min-width:74px;min-height:40px;padding:8px 9px;border-radius:10px;font-size:9px;font-weight:950;box-shadow:0 6px 14px #0004}
+body.screen-bench .benchitem button.success{background:linear-gradient(145deg,#22a978,#0e704f);border-color:#5bd4a9}
+body.screen-bench .benchitem button.danger{background:linear-gradient(145deg,#b83a50,#7e2032);border-color:#db7080}
+body.screen-bench .benchitem.fouled-out{opacity:.68;border-color:#d05b6c}
+body.screen-bench .benchitem.fouled-out .jersey{filter:grayscale(.45) drop-shadow(0 5px 5px #0006)}
+body.screen-bench .benchitem.fouled-out:after{content:"FOULED OUT";position:absolute;right:8px;top:7px;font-size:7px;font-weight:950;letter-spacing:.08em;color:#ffc0c9;pointer-events:none}
+@media(max-width:700px){body.screen-bench main{padding:17px 10px 96px}body.screen-bench main>h1{font-size:26px}body.screen-bench main>h1:after{font-size:7px;padding:6px 8px}body.screen-bench .benchcols{grid-template-columns:1fr;gap:10px}body.screen-bench .benchcols:before{display:none}body.screen-bench .bench{padding:9px;border-radius:17px}body.screen-bench .bench h3{padding:10px;margin-bottom:8px;font-size:10px}body.screen-bench .bench:first-child h3:after,body.screen-bench .bench:nth-child(2) h3:after{font-size:7px}body.screen-bench .benchitem{grid-template-columns:50px minmax(0,1fr) auto;min-height:76px;margin:7px 0;padding:7px}body.screen-bench .benchitem .jersey{width:45px;height:53px;font-size:15px}body.screen-bench .benchitem>b{font-size:12px}body.screen-bench .benchitem button{min-width:67px;min-height:37px;padding:7px;font-size:8px}}
+
+@media(max-width:600px){body.screen-teams main,body.screen-game main,body.screen-practice main,body.screen-bench main,body.screen-history main,body.screen-season main{padding:20px 10px 92px}body.screen-teams #app>.buttons:first-of-type{background:linear-gradient(90deg,#062440f2,#0a3152f2);padding:11px;min-height:78px}body.screen-teams .row{min-height:82px;padding:8px}body.screen-teams .row .team-player-jersey{width:60px;height:68px;font-size:17px;flex-basis:60px}body.screen-teams .row button{padding:8px 9px;min-height:38px;font-size:10px}body.screen-game .score{font-size:50px}body.screen-game .player{min-height:132px;padding:11px}body.screen-game .player .jersey{width:56px;height:64px;font-size:18px}body.screen-practice main>h1{font-size:25px}body.screen-practice .timer{border-radius:20px;padding:20px 11px 15px}body.screen-practice .timer .time{font-size:58px}body.screen-practice .timer .buttons{flex-wrap:wrap}body.screen-practice .timer .buttons button{flex:1;min-width:84px}body.screen-practice .row{min-height:72px;padding:8px}body.screen-practice .row button{padding:7px 8px;font-size:8px}}
