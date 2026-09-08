@@ -1,5 +1,5 @@
 let sb=null, user=null, teams=[], players=[], T=null, S="home", G={}, drills=[];
-let timer={id:null,left:0,running:false}, int=null;
+let timer={id:null,left:0,running:false}, int=null, audioCtx=null;
 
 const $=id=>document.getElementById(id);
 const team=()=>teams.find(t=>t.id===T);
@@ -157,9 +157,9 @@ function game(){
 }
 
 function pc(p){
-  let g=G[p.id],pts=g.one+2*g.two+3*g.three;
-  return `<div class="player">${jersey(p)}<b>${esc(p.name)} #${esc(p.jersey_number)}</b>
-  <div class="stats">PTS ${pts} · FOUL ${g.foul}/5 · SUB OFF ${g.off}${g.foul===5?" · FOULED OUT":""}</div>
+  let g=G[p.id],pts=g.one+2*g.two+3*g.three,fo=g.foul===5;
+  return `<div class="player${fo?" fouled-out":""}">${jersey(p)}<b>${esc(p.name)} #${esc(p.jersey_number)}</b>
+  <div class="stats">PTS ${pts} · FOUL ${g.foul}/5 · SUB OFF ${g.off}${fo?" · FOULED OUT":""}</div>
   <div class="buttons">
     <button class="primary" onclick="pts('${p.id}',1)">+1</button>
     <button class="primary" onclick="pts('${p.id}',2)">+2</button>
@@ -170,9 +170,10 @@ function pc(p){
 }
 
 function pts(id,n){G[id][n===1?"one":n===2?"two":"three"]++;render()}
-function foul(id){if(G[id].foul<5)G[id].foul++;render()}
+function foul(id){if(G[id].foul<5){G[id].foul++;if(G[id].foul===5)G[id].on=false}render()}
 function sub(id){
   let g=G[id];
+  if(g.foul>=5)return alert("Player has fouled out and cannot return to the court.");
   if(g.on){g.on=false;g.off++}
   else if(Object.values(G).filter(x=>x.on).length<5)g.on=true;
   else return alert("Five players are already on court.");
@@ -208,8 +209,8 @@ function bench(){
   <div class="bench"><h3>BENCH · ${players.filter(p=>!G[p.id].on).length}</h3>${players.filter(p=>!G[p.id].on).map(bi).join("")}</div></div>`;
 }
 function bi(p){
-  let g=G[p.id];
-  return `<div class="benchitem">${jersey(p)}<b>${esc(p.name)}<br><small>${g.foul}/5 fouls · ${g.off} sub offs</small></b>
+  let g=G[p.id],fo=g.foul===5;
+  return `<div class="benchitem${fo?" fouled-out":""}">${jersey(p)}<b>${esc(p.name)}<br><small>${g.foul}/5 fouls · ${g.off} sub offs${fo?" · FOULED OUT":""}</small></b>
   <button class="${g.on?"danger":"success"}" onclick="sub('${p.id}')">${g.on?"SUB OFF":"SUB ON"}</button></div>`;
 }
 
@@ -247,12 +248,19 @@ function practice(){
   <div class="card"><button class="primary" onclick="addDrill()">＋ ADD DRILL</button>
   <div class="list" style="margin-top:8px">${drills.map(d=>`<div class="row"><b>${esc(d.name)}<br><small>${d.minutes} min</small></b>
   <button class="secondary" onclick="sel('${d.id}')">SELECT</button><button class="danger" onclick="delDrill('${d.id}')">×</button></div>`).join("")}</div></div>
-  <div class="notice">Short sound at 1:00 remaining and at the end.</div>`;
+  <div class="notice">Sound at 1:00 remaining and at the end. Keep this page open while the drill timer runs.</div>`;
 }
 function fmt(x){return String(Math.floor(x/60)).padStart(2,"0")+":"+String(x%60).padStart(2,"0")}
 function sel(id){timer.id=id;timer.left=(drills.find(x=>x.id===id)?.minutes||0)*60;render()}
 function start(){
   if(!timer.id)return alert("Select a drill.");
+  try{
+    const AC=window.AudioContext||window.webkitAudioContext;
+    if(AC){
+      if(!audioCtx)audioCtx=new AC();
+      if(audioCtx.state==="suspended")audioCtx.resume();
+    }
+  }catch(e){}
   clearInterval(int);timer.running=true;
   int=setInterval(()=>{
     timer.left--;
@@ -266,9 +274,13 @@ function pause(){timer.running=false;clearInterval(int);render()}
 function resetTimer(){pause();timer.left=timer.id?(drills.find(x=>x.id===timer.id)?.minutes||0)*60:0;render()}
 function beep(){
   try{
-    let c=new (window.AudioContext||window.webkitAudioContext)(),o=c.createOscillator(),g=c.createGain();
-    o.frequency.value=1800;g.gain.value=.08;o.connect(g);g.connect(c.destination);o.start();
-    setTimeout(()=>{o.stop();c.close()},180);
+    const AC=window.AudioContext||window.webkitAudioContext;
+    if(!AC)return;
+    if(!audioCtx)audioCtx=new AC();
+    if(audioCtx.state==="suspended")audioCtx.resume();
+    let o=audioCtx.createOscillator(),g=audioCtx.createGain();
+    o.frequency.value=1800;g.gain.value=.08;o.connect(g);g.connect(audioCtx.destination);o.start();
+    setTimeout(()=>{try{o.stop()}catch(e){}},180);
   }catch(e){}
 }
 async function addDrill(){
