@@ -1,0 +1,24 @@
+/* Fouled-out players — clear red treatment */
+body.screen-game .player.fouled-out,
+body.screen-bench .benchitem.fouled-out{
+  border-color:#ff334f;
+  background:linear-gradient(105deg,#651525,#3a0d19);
+  box-shadow:0 0 0 2px #ff334f33,0 9px 24px #0006;
+}
+body.screen-game .player.fouled-out>b,
+body.screen-bench .benchitem.fouled-out>b{
+  color:#ff6678;
+}
+body.screen-game .player.fouled-out .stats,
+body.screen-bench .benchitem.fouled-out small{
+  color:#ff9aa7;
+}
+body.screen-game .player.fouled-out .jersey,
+body.screen-bench .benchitem.fouled-out .jersey{
+  filter:drop-shadow(0 0 6px #ff334f66);
+}
+body.screen-game .player.fouled-out .danger,
+body.screen-bench .benchitem.fouled-out .danger{
+  background:#7d1d2d;
+  border-color:#ff5268;
+}
