@@ -1,6 +1,6 @@
 // Keep every navigation entry behind authentication.
 // app.js owns the auth state; this guard controls navigation UI and the
-// email-confirmation redirect so Supabase never falls back to localhost.
+// published app's sign-in experience.
 const _coachGo=go;
 go=function(s){
   if(!user){
@@ -15,22 +15,8 @@ $("menu").onclick=()=>{
   $("drawer").classList.remove("hide");
 };
 
-function coachAuthRedirect(){
-  return window.location.origin + window.location.pathname;
-}
-
-// Override signup so confirmation emails return to the published site.
-// This is important because Supabase defaults to localhost when no redirect
-// URL/site URL has been configured.
-async function signup(){
-  const email=$("email")?.value.trim(), password=$("pw")?.value||"";
-  if(!email||!password)return auth("Enter your email and password.");
-  if(password.length<6)return auth("Use a password of at least 6 characters.");
-  const r=await sb.auth.signUp({
-    email,
-    password,
-    options:{emailRedirectTo:coachAuthRedirect()}
-  });
-  if(r.error)return auth(r.error.message);
-  auth("Account created. Check your email and tap the confirmation link. You’ll return to Coach Assistant automatically.");
+// This app is private. Keep the existing sign-in function from app.js,
+// but replace its screen so there is no public account-creation option.
+function auth(err=""){
+  $("app").innerHTML=`<div class="auth"><div class="card"><h1>Coach Assistant</h1><p class="sub">Sign in to sync your coaching data across your iPhone and iPad.</p>${err?`<div class="error">${esc(err)}</div>`:""}<input id="email" type="email" autocomplete="email" placeholder="Email"><input id="pw" type="password" autocomplete="current-password" placeholder="Password"><div class="buttons"><button class="primary" onclick="signin()">SIGN IN</button></div></div></div>`;
 }
