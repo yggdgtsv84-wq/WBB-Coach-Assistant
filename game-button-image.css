@@ -1,11 +1,11 @@
-/* GAME card: use the original supplied reference artwork directly. The artwork is cropped slightly so the stray strip at the bottom is never shown. */
+/* GAME card: clean crop of the supplied reference image. No screenshot strip and no nested image asset. */
 .dash-game{
   position:relative!important;
   overflow:hidden!important;
   background:#06182f!important;
-  background-image:url("assets/game-card.svg?v=7")!important;
-  background-size:100% 106.5%!important;
-  background-position:center top!important;
+  background-image:url("assets/game-card-clean.svg?v=8")!important;
+  background-size:100% 100%!important;
+  background-position:center!important;
   background-repeat:no-repeat!important;
   border:0!important;
   padding:0!important;
