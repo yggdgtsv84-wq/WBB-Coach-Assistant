@@ -1,26 +1,8 @@
-/* Game button — use the supplied basketball-court image as the button artwork. */
+/* Game button — supplied basketball-court image included in the button artwork. */
 body.screen-home .dash-game{
-  background-image:linear-gradient(90deg,rgba(4,23,46,.96) 0%,rgba(4,23,46,.86) 38%,rgba(4,23,46,.22) 72%,rgba(4,23,46,.08) 100%),url("data:image/webp;base64,UklGRkJCAABXRUJQVlA4IDZCAACwaAGdASogBAoBPsFcpU8npK+wJFabYgAYCWVuc/beb9XFs/s6PSQu");
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-}
-body.screen-home .dash-game:before,
-body.screen-home .dash-game:after,
-body.screen-home .dash-game .court-art{display:none!important}
+background-image:linear-gradient(90deg,rgba(4,23,46,.96) 0%,rgba(4,23,46,.86) 38%,rgba(4,23,46,.22) 72%,rgba(4,23,46,.08) 100%),url("data:image/webp;base64,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");
+background-size:cover;background-position:center;background-repeat:no-repeat}
+body.screen-home .dash-game:before,body.screen-home .dash-game:after,body.screen-home .dash-game .court-art{display:none!important}
 body.screen-home .dash-game .dash-copy{position:relative;z-index:4}
-body.screen-home .dash-game .dash-copy em{
-  background:linear-gradient(180deg,#70d7f7,#55c5eb);
-  color:#05213a;
-  padding:11px 18px;
-  min-width:190px;
-  justify-content:center;
-  border-radius:999px;
-  box-shadow:0 7px 16px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.28);
-  font-size:11px;
-  letter-spacing:.02em;
-}
+body.screen-home .dash-game .dash-copy em{background:linear-gradient(180deg,#70d7f7,#55c5eb);color:#05213a;padding:11px 18px;min-width:190px;justify-content:center;border-radius:999px;box-shadow:0 7px 16px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.28);font-size:11px;letter-spacing:.02em}
 body.screen-home .dash-game .dash-copy em b{font-size:22px;line-height:10px;margin-left:2px}
-@media(max-width:700px){
-  body.screen-home .dash-game{background-position:center}
-}
