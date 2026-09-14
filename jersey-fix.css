@@ -1,5 +1,5 @@
 /* Final jersey visibility fix — never make the jersey transparent. */
-.jersey{background-color:#72c8e8!important;background-image:inherit!important;background-size:100% 100%!important;background-position:center!important;background-repeat:no-repeat!important;clip-path:none!important;opacity:1!important;visibility:visible!important;overflow:visible!important;}
+.jersey{background-color:#72c8e8!important;background-size:100% 100%!important;background-position:center!important;background-repeat:no-repeat!important;clip-path:none!important;opacity:1!important;visibility:visible!important;overflow:visible!important;}
 .jersey:before,.jersey:after{display:none!important;content:none!important;}
 body.screen-game .player .jersey{width:74px!important;height:86px!important;margin-right:10px!important;font-size:20px!important;padding:0!important;display:inline-grid!important;place-items:center!important;}
 body.screen-teams .row .team-player-jersey{width:78px!important;height:92px!important;margin:0 6px 0 auto!important;font-size:21px!important;display:inline-grid!important;place-items:center!important;}
