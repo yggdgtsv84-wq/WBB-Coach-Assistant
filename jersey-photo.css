@@ -1,0 +1,28 @@
+/* Photographic jersey asset: embedded so no separate binary upload is required. */
+.jersey{
+  display:inline-flex!important;
+  align-items:flex-end!important;
+  justify-content:center!important;
+  vertical-align:middle;
+  width:54px!important;
+  height:62px!important;
+  margin-right:10px!important;
+  position:relative;
+  overflow:hidden;
+  border-radius:8px 8px 6px 6px;
+  background-image:url("data:image/webp;base64,REPLACE_ME");
+  background-size:225% 225%!important;
+  background-position:center 48%!important;
+  background-repeat:no-repeat!important;
+  clip-path:none!important;
+  color:#071b35!important;
+  font-weight:950!important;
+  font-size:17px!important;
+  line-height:1!important;
+  padding-bottom:7px!important;
+  text-shadow:0 1px 0 #fff,0 0 3px #fff!important;
+  box-shadow:0 3px 8px rgba(8,28,52,.22)!important;
+  isolation:isolate;
+}
+.jersey:before,.jersey:after{display:none!important;}
+@media(max-width:430px){.jersey{width:50px!important;height:58px!important;}}
