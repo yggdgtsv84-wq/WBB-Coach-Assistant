@@ -1,11 +1,11 @@
-/* GAME card: use the supplied reference artwork, cropping out the strip below the rounded card. */
+/* GAME card: use the supplied artwork with the outer strip cropped off. */
 .dash-game{
   position:relative!important;
   overflow:hidden!important;
   background-color:#06182f!important;
-  background-image:url("assets/game-card.svg?v=6")!important;
-  background-size:100% 111%!important;
-  background-position:center top!important;
+  background-image:url("assets/game-card-cropped.svg?v=1")!important;
+  background-size:100% 100%!important;
+  background-position:center!important;
   background-repeat:no-repeat!important;
   border:0!important;
   padding:0!important;
