@@ -1,0 +1,10 @@
+/* Final GAME card artwork: clean crop of the supplied reference, with the lower screenshot strip removed. */
+.dash-game{
+  position:relative!important;
+  overflow:hidden!important;
+  background:#06182f url("assets/game-card-clean.svg?v=1") center center / 100% 100% no-repeat!important;
+  border:0!important;
+  padding:0!important;
+}
+.dash-game:before,.dash-game:after,.dash-game .court-art{display:none!important}
+.dash-game .dash-copy{opacity:0!important;visibility:hidden!important;pointer-events:none!important}
