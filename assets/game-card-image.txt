@@ -1,0 +1,1 @@
+This file intentionally left as a marker while the binary asset is committed through the Git data API.
