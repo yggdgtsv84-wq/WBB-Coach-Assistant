@@ -1,0 +1,1 @@
+The GAME card artwork is the supplied IMG_0038 reference image. The site CSS points to the binary game-card asset.
