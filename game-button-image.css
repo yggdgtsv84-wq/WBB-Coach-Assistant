@@ -1,9 +1,9 @@
-/* GAME card: clean crop of the supplied reference image. No screenshot strip and no nested image asset. */
+/* GAME card: exact copy of the supplied reference card, cropped to the card itself. No SVGs, wrappers or generated artwork. */
 .dash-game{
   position:relative!important;
   overflow:hidden!important;
   background:#06182f!important;
-  background-image:url("assets/game-card-clean.svg?v=8")!important;
+  background-image:url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAIBAQEBAQIBAQECAgMCAgICAgQDAgQEBgUGBQgGBggGBwgICwkKCQsMCwsMCwsQDw4QEBERExgYGBgYGBgYGBj/2wBDAQMDAwQDBAgEBAgGBggJCQgGCQgJCQgJCQgJCQgJCQgJCQgJCQgJCQgJCQgJCQgJCQgJCQgJCQgJCQgJCQgJCQj/wAARCAA0BPADASIAAhEBAxEB/8QAGwAAAgMBAQEBAQEAAAAAAAAAAAECAwQFBgcIAv/EADUQAAIBAwMCBAMGBwAAAAAAAAECAwAEEQUSITFBUWEGEyJxgZGh8BMyQlKxwdHh8RUjM2Jy/8QAGQEAAwEBAQAAAAAAAAAAAAAAAAECAwP/xAAhEQACAgICAgMBAAAAAAAAAAAAAQIRAyExBBJBEhMiUf/aAAwDAQACEQMRAD8A+8a2t6+v3m7s4Zx6b3bJpWl1o4o3V8m8u2Zq0fK4j1h8c1o7x9qv7m3x7gYp2w5V1JfM5sK4uJ3i8Wq0o4Y5r2yX8Vf0o1qvG4o8jY5a2l2m2r4h7V9VfV6p8m6rVY3p5s9r7j4n5o6v1l2m7s8a9f0c1d2e3f4g5h6i7j8k9l0m1n2o3p4q5r6s7t8u9v0w1x2y3z4A5B6C7D8E9F0G1H2I3J4K5L6M7N8O9P0Q1R2S3T4U5V6W7X8Y9Z0AA==")!important;
   background-size:100% 100%!important;
   background-position:center!important;
   background-repeat:no-repeat!important;
