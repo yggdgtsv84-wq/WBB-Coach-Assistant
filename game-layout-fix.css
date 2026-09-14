@@ -1,0 +1,13 @@
+/* Game screen: keep the global bottom navigation from covering game controls. */
+body.screen-game nav{
+  display:none!important;
+}
+body.screen-game main{
+  padding-bottom:24px!important;
+}
+/* Keep iPhone/iPad safe-area space without reintroducing an overlay. */
+@supports(padding:max(0px)){
+  body.screen-game main{
+    padding-bottom:max(24px,env(safe-area-inset-bottom))!important;
+  }
+}
