@@ -1,0 +1,9 @@
+/* Jersey display fix: use the photographic jersey already loaded by jersey-photo.css. */
+.jersey{background-size:contain!important;background-position:center center!important;background-repeat:no-repeat!important;background-color:transparent!important;clip-path:none!important;overflow:visible!important;}
+.jersey:before,.jersey:after{display:none!important;content:none!important;}
+body.screen-game .player .jersey{width:74px!important;height:86px!important;margin-right:10px!important;font-size:20px!important;padding:0!important;display:inline-grid!important;place-items:center!important;}
+body.screen-teams .row .team-player-jersey{width:78px!important;height:92px!important;margin:0 6px 0 auto!important;font-size:21px!important;display:inline-grid!important;place-items:center!important;}
+body.screen-bench .benchitem .jersey{width:60px!important;height:70px!important;font-size:18px!important;margin-right:6px!important;display:inline-grid!important;place-items:center!important;}
+body.screen-home .dash-teams .jersey-art{width:105px!important;height:125px!important;right:10px!important;bottom:2px!important;overflow:visible!important;}
+body.screen-home .dash-teams .mini-jersey{width:105px!important;height:125px!important;background-size:contain!important;background-position:center!important;background-repeat:no-repeat!important;background-color:transparent!important;clip-path:none!important;filter:drop-shadow(0 8px 8px #0006)!important;color:transparent!important;text-shadow:none!important;}
+@media(max-width:430px){body.screen-game .player .jersey{width:62px!important;height:74px!important;}body.screen-teams .row .team-player-jersey{width:68px!important;height:80px!important;}body.screen-bench .benchitem .jersey{width:54px!important;height:64px!important;}}
