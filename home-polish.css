@@ -7,16 +7,13 @@ body.screen-home .team-strip{margin-bottom:14px;background:linear-gradient(100de
 body.screen-home .dash-grid{grid-template-columns:repeat(12,1fr);gap:11px}
 body.screen-home .dash-card{min-height:148px;padding:17px;border-radius:16px;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
 body.screen-home .dash-card:hover{border-color:#67c7ee88}
-/* Primary coach action */
 body.screen-home .dash-game{grid-column:span 12;min-height:205px;padding:21px}
 body.screen-home .dash-game .dash-copy{max-width:47%}
 body.screen-home .dash-game .dash-copy strong{font-size:30px}
 body.screen-home .dash-game .court-art{right:-45px;bottom:-110px;width:500px;height:285px}
-/* Quick actions */
 body.screen-home .dash-practice{grid-column:span 4;order:1}
 body.screen-home .dash-teams{grid-column:span 4;min-height:148px;order:2}
 body.screen-home .dash-bench{grid-column:span 4;order:3}
-/* Secondary information */
 body.screen-home .dash-history{grid-column:span 6;min-height:128px;order:4}
 body.screen-home .dash-season{grid-column:span 6;min-height:128px;order:5}
 body.screen-home .dash-icon{width:43px;height:43px;border-radius:12px}
@@ -24,11 +21,15 @@ body.screen-home .dash-copy strong{font-size:18px;margin-top:11px}
 body.screen-home .dash-copy span{font-size:10.5px;max-width:240px}
 body.screen-home .dash-copy em{margin-top:10px;padding:7px 10px}
 body.screen-home .dashboard-footer{margin-top:12px}
-/* Give the secondary cards a quieter visual weight without changing the theme */
 body.screen-home .dash-history,body.screen-home .dash-season{background:#082442cc;opacity:.94}
 body.screen-home .dash-history .dash-icon,body.screen-home .dash-season .dash-icon{width:38px;height:38px;font-size:19px}
 body.screen-home .dash-history .dash-copy strong,body.screen-home .dash-season .dash-copy strong{font-size:16px;margin-top:8px}
 body.screen-home .dash-history .dash-copy em,body.screen-home .dash-season .dash-copy em{margin-top:7px}
+
+/* Real photographic isolated jersey on Teams & Players home card. */
+body.screen-home .dash-teams .jersey-art{position:absolute;right:10px;bottom:4px;width:92px;height:112px;background:transparent!important;pointer-events:none;overflow:hidden;z-index:1}
+body.screen-home .dash-teams .mini-jersey{width:92px;height:112px;background-image:url("data:image/webp;base64,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");background-size:contain;background-position:center bottom;background-repeat:no-repeat;filter:drop-shadow(0 8px 10px rgba(0,0,0,.25));font-size:0;color:transparent}
+body.screen-home .dash-teams .mini-jersey{font-size:0!important;color:transparent!important;background-color:transparent!important;clip-path:none!important;border:0!important;box-shadow:none!important}
 @media(max-width:700px){
  body.screen-home .dashboard{padding-top:16px}
  body.screen-home .dash-intro{margin-bottom:9px}
@@ -49,6 +50,8 @@ body.screen-home .dash-history .dash-copy em,body.screen-home .dash-season .dash
  body.screen-home .dash-history .dash-copy strong,body.screen-home .dash-season .dash-copy strong{font-size:15px}
  body.screen-home .dash-game .court-art{right:-120px;width:390px;height:240px}
  body.screen-home .dashboard-footer{margin-top:10px}
+ body.screen-home .dash-teams .jersey-art{width:76px;height:94px;right:3px;bottom:1px}
+ body.screen-home .dash-teams .mini-jersey{width:76px;height:94px}
 }
 @media(max-width:430px){
  body.screen-home .dash-grid{gap:7px}
@@ -60,4 +63,6 @@ body.screen-home .dash-history .dash-copy em,body.screen-home .dash-season .dash
  body.screen-home .dash-copy span{font-size:9px}
  body.screen-home .dash-history,body.screen-home .dash-season{min-height:126px}
  body.screen-home .dash-history .dash-copy strong,body.screen-home .dash-season .dash-copy strong{font-size:14px}
+ body.screen-home .dash-teams .jersey-art{width:66px;height:82px;right:2px;bottom:1px}
+ body.screen-home .dash-teams .mini-jersey{width:66px;height:82px}
 }
