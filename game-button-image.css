@@ -2,9 +2,9 @@
 .dash-game{
   position:relative!important;
   overflow:hidden!important;
-  background-image:url("assets/game-card.svg?v=4")!important;
-  background-size:100% 100%!important;
-  background-position:center!important;
+  background-image:url("assets/game-card.svg?v=5")!important;
+  background-size:100% 106%!important;
+  background-position:center top!important;
   background-repeat:no-repeat!important;
   border:0!important;
   padding:0!important;
