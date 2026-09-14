@@ -1,14 +1,12 @@
-/* Photo-realistic GAME card: use the supplied basketball-court photograph already stored in the repo. */
+/* GAME card: use the real image asset directly (not an SVG wrapper). */
 .dash-game{
   position:relative!important;
   overflow:hidden!important;
   background-color:#06182f!important;
-  background-image:url("assets/game-card.svg?v=photo1")!important;
+  background-image:url("./assets/game-card.webp?v=9")!important;
   background-repeat:no-repeat!important;
-  background-position:center top!important;
-  /* The source photograph contains a small amount of screenshot space below the card.
-     Stretching it slightly vertically crops that area while keeping the real photo. */
-  background-size:100% 108%!important;
+  background-position:center center!important;
+  background-size:cover!important;
   border:0!important;
   padding:0!important;
   min-height:190px!important;
@@ -24,5 +22,5 @@
   pointer-events:none!important;
 }
 @media(max-width:700px){
-  .dash-game{min-height:175px!important;background-size:100% 108%!important}
+  .dash-game{min-height:175px!important;background-size:cover!important}
 }
