@@ -1,0 +1,14 @@
+/* Reliable GAME card image: no body-class dependency on initial render. */
+.dash-game{
+  position:relative!important;
+  overflow:hidden!important;
+  background-image:url("assets/game-card.jpg?v=3")!important;
+  background-size:100% 100%!important;
+  background-position:center!important;
+  background-repeat:no-repeat!important;
+  border:0!important;
+  padding:0!important;
+}
+.dash-game:before,.dash-game:after,.dash-game .court-art{display:none!important}
+.dash-game .dash-copy{opacity:0!important;visibility:hidden!important;pointer-events:none!important}
+.dash-game > *{position:relative;z-index:2}
