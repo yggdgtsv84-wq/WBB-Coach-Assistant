@@ -1,26 +1,19 @@
-/* GAME card: use the real image asset directly (not an SVG wrapper). */
+/* GAME card: use the supplied photo only. No blue fallback, no SVG, no overlay. */
 .dash-game{
   position:relative!important;
   overflow:hidden!important;
-  background-color:#06182f!important;
-  background-image:url("./assets/game-card.webp?v=9")!important;
-  background-repeat:no-repeat!important;
-  background-position:center center!important;
-  background-size:cover!important;
+  background:#000 url("assets/game-card.webp?v=10") center center / 100% 100% no-repeat!important;
   border:0!important;
   padding:0!important;
   min-height:190px!important;
+  box-shadow:none!important;
 }
 .dash-game:before,
 .dash-game:after,
-.dash-game .court-art{
+.dash-game .court-art,
+.dash-game .dash-copy{
   display:none!important;
 }
-.dash-game .dash-copy{
-  opacity:0!important;
-  visibility:hidden!important;
-  pointer-events:none!important;
-}
 @media(max-width:700px){
-  .dash-game{min-height:175px!important;background-size:cover!important}
+  .dash-game{min-height:175px!important;background-size:100% 100%!important;}
 }
