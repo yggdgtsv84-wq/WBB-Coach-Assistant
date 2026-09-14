@@ -1,0 +1,5 @@
+/* Remove the solid blue rectangle behind the photo-realistic jersey. Keep the jersey image itself unchanged. */
+.jersey{
+  background-color:transparent!important;
+  box-shadow:none!important;
+}
