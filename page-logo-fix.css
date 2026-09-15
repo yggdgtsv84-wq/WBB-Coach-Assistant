@@ -1,0 +1,2 @@
+/* Use the exact same West Belconnen logo as the home-page header. */
+main>h1:first-child:before{content:""!important;display:block!important;width:40px!important;height:40px!important;flex:0 0 40px!important;border-radius:0!important;background:url("assets/wests-basketball-logo.svg") center/contain no-repeat!important;box-shadow:none!important}
