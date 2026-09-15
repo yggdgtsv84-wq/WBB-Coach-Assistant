@@ -1,0 +1,12 @@
+/* HISTORY card: photorealistic basketball tactics board with a play being mapped out. Pexels, free to use. */
+.dash-history{position:relative!important;overflow:hidden!important;background-color:#07182b!important;background-image:url("https://images.pexels.com/photos/32688082/pexels-photo-32688082.jpeg?auto=compress&cs=tinysrgb&w=1800")!important;background-repeat:no-repeat!important;background-position:center center!important;background-size:cover!important;border:1px solid #ffffff26!important;box-shadow:0 12px 28px #06182f45!important}
+.dash-history:before{content:""!important;position:absolute!important;inset:0!important;z-index:0!important;background:linear-gradient(90deg,#04172ef4 0%,#06182fcf 42%,#06182f58 70%,#06182f18 100%),linear-gradient(180deg,#0002 0%,transparent 50%,#0007 100%)!important}
+.dash-history:after{display:none!important}
+.dash-history .clipboard-art{display:none!important}
+.dash-history .dash-icon{display:none!important}
+.dash-history .dash-copy{position:relative!important;z-index:3!important;display:block!important;max-width:82%!important}
+.dash-history .dash-copy strong{color:#fff!important;margin-top:0!important}
+.dash-history .dash-copy span{color:#e1eef5!important}
+.dash-history .dash-copy em{background:linear-gradient(180deg,#70d8f7,#55c8ed)!important;color:#05213a!important}
+@media(max-width:700px){.dash-history{background-position:center center!important;background-size:cover!important}.dash-history .dash-copy{max-width:88%!important}}
+@media(max-width:430px){.dash-history .dash-copy{max-width:90%!important}}
