@@ -1,0 +1,3 @@
+/* West Belconnen logo beside Game, Practice, Season and History page titles. */
+main>h1:first-child{display:flex;align-items:center;gap:10px}
+main>h1:first-child:before{content:"";display:block;flex:0 0 38px;width:38px;height:38px;border-radius:50%;background:#72c2e9 url("assets/wests-basketball-logo.svg?v=1") center/cover no-repeat;box-shadow:0 4px 10px #071b3530}
