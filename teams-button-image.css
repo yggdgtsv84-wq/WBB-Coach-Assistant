@@ -1,0 +1,12 @@
+/* TEAMS & PLAYERS card: real women's basketball team + coach scene. Pexels, free to use. */
+.dash-teams{position:relative!important;overflow:hidden!important;background-color:#07182b!important;background-image:url("https://images.pexels.com/photos/6767014/pexels-photo-6767014.jpeg?auto=compress&cs=tinysrgb&w=1800")!important;background-repeat:no-repeat!important;background-position:center center!important;background-size:cover!important;border:1px solid #ffffff26!important;box-shadow:0 12px 28px #06182f45!important}
+.dash-teams:before{content:""!important;position:absolute!important;inset:0!important;z-index:0!important;background:linear-gradient(90deg,#04172ef4 0%,#06182fc9 38%,#06182f58 68%,#06182f12 100%),linear-gradient(180deg,#0002 0%,transparent 48%,#0008 100%)!important}
+.dash-teams:after{display:none!important}
+.dash-teams .jersey-art{display:none!important}
+.dash-teams .dash-icon{display:none!important}
+.dash-teams .dash-copy{position:relative!important;z-index:3!important;display:block!important;max-width:72%!important}
+.dash-teams .dash-copy strong{color:#fff!important;margin-top:0!important}
+.dash-teams .dash-copy span{color:#e1eef5!important}
+.dash-teams .dash-copy em{background:linear-gradient(180deg,#70d8f7,#55c8ed)!important;color:#05213a!important}
+@media(max-width:700px){.dash-teams{background-position:center center!important;background-size:cover!important}.dash-teams .dash-copy{max-width:80%!important}}
+@media(max-width:430px){.dash-teams .dash-copy{max-width:84%!important}}
