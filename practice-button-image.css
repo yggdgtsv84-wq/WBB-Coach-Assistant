@@ -1,0 +1,12 @@
+/* PRACTICE card: photorealistic indoor basketball practice scene. Pexels, free to use. */
+.dash-practice{position:relative!important;overflow:hidden!important;background-color:#07182b!important;background-image:url("https://images.pexels.com/photos/7156048/pexels-photo-7156048.jpeg?auto=compress&cs=tinysrgb&w=1800")!important;background-repeat:no-repeat!important;background-position:center center!important;background-size:cover!important;border:1px solid #ffffff26!important;box-shadow:0 12px 28px #06182f45!important}
+.dash-practice:before{content:""!important;position:absolute!important;inset:0!important;z-index:0!important;background:linear-gradient(90deg,#04172ef2 0%,#06182fca 38%,#06182f4a 70%,#06182f18 100%),linear-gradient(180deg,#0002 0%,transparent 50%,#0007 100%)!important}
+.dash-practice:after{display:none!important}
+.dash-practice .training-art{display:none!important}
+.dash-practice .dash-icon{display:none!important}
+.dash-practice .dash-copy{position:relative!important;z-index:3!important;display:block!important;max-width:72%!important}
+.dash-practice .dash-copy strong{color:#fff!important;margin-top:0!important}
+.dash-practice .dash-copy span{color:#e1eef5!important}
+.dash-practice .dash-copy em{background:linear-gradient(180deg,#70d8f7,#55c8ed)!important;color:#05213a!important}
+@media(max-width:700px){.dash-practice{background-position:center center!important;background-size:cover!important}.dash-practice .dash-copy{max-width:80%!important}}
+@media(max-width:430px){.dash-practice .dash-copy{max-width:84%!important}}
