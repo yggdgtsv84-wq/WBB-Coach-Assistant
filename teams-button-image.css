@@ -1,5 +1,5 @@
-/* TEAMS & PLAYERS card: real women's basketball team + coach scene. Pexels, free to use. */
-.dash-teams{position:relative!important;overflow:hidden!important;background-color:#07182b!important;background-image:url("https://images.pexels.com/photos/6767014/pexels-photo-6767014.jpeg?auto=compress&cs=tinysrgb&w=1800")!important;background-repeat:no-repeat!important;background-position:center center!important;background-size:cover!important;border:1px solid #ffffff26!important;box-shadow:0 12px 28px #06182f45!important}
+/* TEAMS & PLAYERS card: dynamic girls/women's basketball action shot. Pexels, free to use. */
+.dash-teams{position:relative!important;overflow:hidden!important;background-color:#07182b!important;background-image:url("https://images.pexels.com/photos/934083/pexels-photo-934083.jpeg?auto=compress&cs=tinysrgb&w=1800")!important;background-repeat:no-repeat!important;background-position:center center!important;background-size:cover!important;border:1px solid #ffffff26!important;box-shadow:0 12px 28px #06182f45!important}
 .dash-teams:before{content:""!important;position:absolute!important;inset:0!important;z-index:0!important;background:linear-gradient(90deg,#04172ef4 0%,#06182fc9 38%,#06182f58 68%,#06182f12 100%),linear-gradient(180deg,#0002 0%,transparent 48%,#0008 100%)!important}
 .dash-teams:after{display:none!important}
 .dash-teams .jersey-art{display:none!important}
