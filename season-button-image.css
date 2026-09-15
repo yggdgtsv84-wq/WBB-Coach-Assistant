@@ -1,5 +1,5 @@
-/* SEASON card: photorealistic basketball hoop + illuminated scoreboard in a dark gym. Unsplash, free to use. */
-.dash-season{position:relative!important;overflow:hidden!important;background-color:#06172a!important;background-image:url("https://images.unsplash.com/photo-1765445139654-cd48b90c20ea?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=88&w=1800")!important;background-repeat:no-repeat!important;background-position:center center!important;background-size:cover!important;border:1px solid #ffffff26!important;box-shadow:0 12px 28px #06182f45!important}
+/* SEASON card: photorealistic basketball hoop + scoreboard in a gymnasium. Unsplash, free to use. */
+.dash-season{position:relative!important;overflow:hidden!important;background-color:#06172a!important;background-image:url("https://images.unsplash.com/photo-1773098654494-be1df2c16e86?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=88&w=1800")!important;background-repeat:no-repeat!important;background-position:center center!important;background-size:cover!important;border:1px solid #ffffff26!important;box-shadow:0 12px 28px #06182f45!important}
 .dash-season:before{content:""!important;position:absolute!important;inset:0!important;z-index:0!important;background:linear-gradient(90deg,#04172ef2 0%,#06182fc7 38%,#06182f58 68%,#06182f18 100%),linear-gradient(180deg,#0003 0%,transparent 48%,#0008 100%)!important}
 .dash-season:after{display:none!important}
 .dash-season .score-art{display:none!important}
