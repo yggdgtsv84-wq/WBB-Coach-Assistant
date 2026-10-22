@@ -5,6 +5,8 @@
   const write=x=>localStorage.setItem(key(),JSON.stringify(x));
   const drillsInSession=()=>{const ids=read();return ids.map(id=>drills.find(d=>d.id===id)).filter(Boolean)};
   let sessionIndex=0;
+  let timerEndsAt=0;
+  let lastTimerSecond=null;
   const note=d=>d.notes?`<small class="drill-notes">${esc(d.notes)}</small>`:"";
 
   window.addToPracticeSession=function(id){const ids=read();if(!ids.includes(id))ids.push(id);write(ids);practice()};
@@ -80,9 +82,8 @@
     beep();
     try{if("vibrate" in navigator)navigator.vibrate([300,120,300])}catch(e){}
   }
-  window.startPracticeSession=function(){
-    const s=drillsInSession();if(!s.length)return alert("Add at least one drill to the session.");prepareAudio();if(sessionIndex>=s.length)sessionIndex=0;timer.id=s[sessionIndex].id;if(timer.left<=0)timer.left=s[sessionIndex].minutes*60;clearInterval(int);timer.running=true;int=setInterval(()=>{timer.left--;if(timer.left===60)alertCoach();if(timer.left===0)beep();if(timer.left<=0){sessionIndex++;if(sessionIndex>=s.length){timer.left=0;timer.running=false;clearInterval(int)}else{timer.id=s[sessionIndex].id;timer.left=s[sessionIndex].minutes*60}}practice()},1000);practice();
-  };
-  window.pausePracticeSession=function(){timer.running=false;clearInterval(int);practice()};
-  window.resetPracticeSession=function(){window.pausePracticeSession();sessionIndex=0;const s=drillsInSession();timer.id=s[0]?.id||null;timer.left=s[0]?(s[0].minutes||0)*60:0;practice()};
+  function timerTick(){if(!timer.running)return;timer.left=Math.max(0,Math.ceil((timerEndsAt-Date.now())/1000));if(timer.left!==lastTimerSecond){lastTimerSecond=timer.left;if(timer.left===60)alertCoach();if(timer.left===0){beep();const s=drillsInSession();sessionIndex++;if(sessionIndex>=s.length){timer.running=false;clearInterval(int);int=null;timerEndsAt=0;practice();return;}timer.id=s[sessionIndex].id;timer.left=Math.max(0,Math.round(Number(s[sessionIndex].minutes)||0)*60);timerEndsAt=Date.now()+timer.left*1000;lastTimerSecond=null;}practice()}}
+  window.startPracticeSession=function(){const s=drillsInSession();if(!s.length)return alert("Add at least one drill to the session.");prepareAudio();if(sessionIndex>=s.length)sessionIndex=0;timer.id=s[sessionIndex].id;if(timer.left<=0)timer.left=Math.round(Number(s[sessionIndex].minutes)||0)*60;clearInterval(int);timer.running=true;timerEndsAt=Date.now()+timer.left*1000;lastTimerSecond=null;int=setInterval(timerTick,200);practice()};
+  window.pausePracticeSession=function(){if(timer.running){timer.left=Math.max(0,Math.ceil((timerEndsAt-Date.now())/1000));timer.running=false;}clearInterval(int);int=null;timerEndsAt=0;lastTimerSecond=null;practice()};
+  window.resetPracticeSession=function(){window.pausePracticeSession();sessionIndex=0;const s=drillsInSession();timer.id=s[0]?.id||null;timer.left=s[0]?Math.round(Number(s[0].minutes)||0)*60:0;practice()};
 })();
